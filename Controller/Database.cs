@@ -1693,6 +1693,23 @@ namespace DomnPhil_Construction.Controller
                 this.db.Close();
             }
         }
+        public void addQuantityController(QuantityController quantityController)
+        {
+            using (MySqlCommand command = new MySqlCommand())
+            {
+                this.db.Open();
+                command.Connection = this.db;
+                command.CommandText = "INSERT INTO `users`( `name`, `username`, `password`, `type`) VALUES (@name,@username,@password,@type)";
+                command.Parameters.AddWithValue("@name", quantityController.name);
+                command.Parameters.AddWithValue("@username", quantityController.username);
+                command.Parameters.AddWithValue("@password", quantityController.password);
+                command.Parameters.AddWithValue("@type", quantityController.type);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Information Saved Successfully!");
+                command.Dispose();
+                this.db.Close();
+            }
+        }
         public void updateDeductibles(Employee employee, String month, String year)
         {
             using (MySqlCommand command = new MySqlCommand())

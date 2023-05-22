@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,19 +39,34 @@ namespace DomnPhil_Construction
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(db.adminLogin(tbUsername.Text, tbPassword.Text)){
-                //new Employees().Show();
-                //new Monthly_Attendance().Show();
-                if (tbUsername.Text == "janphillip")
-                {
-                    new View.MainMenu(true).Show();
+            var source = tbPassword.Text;
+            using (var md5Hash = MD5.Create())
+            {
+                // Byte array representation of source string
+                var sourceBytes = Encoding.UTF8.GetBytes(source);
 
-                }
-                else { 
-                
-                    new View.MainMenu(false).Show();
+                // Generate hash value(Byte Array) for input data
+                var hashBytes = md5Hash.ComputeHash(sourceBytes);
+
+                // Convert hash byte array to string
+                var hash = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
+                if (db.adminLogin(tbUsername.Text, hash))
+                {
+                    //new Employees().Show();
+                    //new Monthly_Attendance().Show();
+                    if (tbUsername.Text == "janphillip")
+                    {
+                        new View.MainMenu(true).Show();
+
+                    }
+                    else
+                    {
+
+                        new View.MainMenu(false).Show();
+                    }
                 }
             }
+          
         }
     }
 }

@@ -146,6 +146,7 @@
     <Compile Include="Controller\MonthlyAttendance.cs" />
     <Compile Include="Models\Purchase_Order.cs" />
     <Compile Include="Models\Purchase_Order_Item.cs" />
+    <Compile Include="Models\QuantityController.cs" />
     <Compile Include="Models\Requester.cs" />
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Login.cs">
