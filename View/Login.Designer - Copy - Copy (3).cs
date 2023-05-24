@@ -244,6 +244,7 @@ namespace DomnPhil_Construction
             this.tbOperationalRate.Name = "tbOperationalRate";
             this.tbOperationalRate.Size = new System.Drawing.Size(264, 27);
             this.tbOperationalRate.TabIndex = 5;
+            this.tbOperationalRate.TextChanged += new System.EventHandler(this.tbOperationalRate_TextChanged);
             this.tbOperationalRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbOperationalRate_KeyDown);
             // 
             // label1

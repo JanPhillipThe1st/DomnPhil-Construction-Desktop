@@ -189,7 +189,7 @@ namespace DomnPhil_Construction
                     {
                         var expression = new Expression(tbOperationalRate.Text.Substring(1));
                         var result = expression.Evaluate();
-                        computedOperationalRate = Convert.ToDouble(result);
+                        computedOperationalRate = Convert.ToDouble(String.Format("{0:###,###,###.##}", result));
                         tbOperationalRate.Text = computedOperationalRate.ToString();
                         employee.operational_rate = (float)computedOperationalRate;
                     }
@@ -211,7 +211,7 @@ namespace DomnPhil_Construction
                     {
                         var expression = new Expression(tbShopRate.Text.Substring(1));
                         var result = expression.Evaluate();
-                        computedOperationalRate = Convert.ToDouble(result);
+                        computedOperationalRate = Convert.ToDouble(String.Format("{0:###,###,###.##}", result));
                         tbShopRate.Text = computedOperationalRate.ToString();
                         employee.shop_rate = (float)computedOperationalRate;
                     }
@@ -221,6 +221,11 @@ namespace DomnPhil_Construction
                     MessageBox.Show("Error in input expression.");
                 }
             }
+        }
+
+        private void tbOperationalRate_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
